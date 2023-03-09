@@ -1,0 +1,24 @@
+import axios from "axios";
+import IMovieObj from "../models/IMovieObj";
+
+const getMovieList=async()=>{
+
+const lsMovies=localStorage.getItem("movies");
+if(lsMovies){
+return JSON.parse(lsMovies);}
+const getItemsUrl="/json/data.json";
+const responseData=await axios.get<IMovieObj>(getItemsUrl);
+return responseData.data;
+
+
+}
+export {getMovieList};
+
+
+
+
+
+
+
+
+
